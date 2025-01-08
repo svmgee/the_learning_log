@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,9 +141,10 @@ BOOTSTRAP3 = {
 # Settings required for Heroku
 cwd = os.getcwd()
 if cwd == '/app' or cwd[:4] == '/tmp':
-    import dj_database_url
     DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL', 'postgres://localhost')
+        )
     }
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure().
@@ -153,7 +155,11 @@ if cwd == '/app' or cwd[:4] == '/tmp':
 
     #Static asset config
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    if os.path.exists(os.path.join(BASE_DIR, 'static')):
+        STATICFILES_DIRS = (
+            os.path.join(BASE_DIR, 'static'),
+        )
+    else:
+        STATICFILES_DIRS = []
