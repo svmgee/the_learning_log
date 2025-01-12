@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ih1jcw#a&^p-=r-_i&^q&thh@r^f_93j2j26*el%+xdpjge=%z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # for production, we'll need to specify hosts. 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = ['sams-learning-log.herokuapp.com']
 
 
 # Application definition
@@ -164,9 +164,6 @@ else:
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure().
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
-
-    # Allow all host headers
-    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
     #Static asset config
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
