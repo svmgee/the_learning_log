@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-ih1jcw#a&^p-=r-_i&^q&thh@r^f_93j2j26*el%+xdpjge=%z
 DEBUG = False
 
 # for production, we'll need to specify hosts. 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['sams-learning-log.herokuapp.com']
 
 
 # Application definition
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'learning_log' / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -148,16 +149,26 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     DATABASES = {
         'default': dj_database_url.config(
             default='postgres://localhost',
+            conn_max_age=600,
+            conn_health_checks=True,
         )
     }
-    
+else:
+    # Development environment (using SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
     # Honor the 'X-Forwarded-Proto' header for request.is_secure().
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
 
     #Static asset config
-    BASE_DIR = Path(__file__).resolve().parent.parent
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-    STATIC_ROOT = BASE_DIR, 'staticfiles'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATIC_URL = '/static/'
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
