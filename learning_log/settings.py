@@ -155,12 +155,10 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
 
     #Static asset config
-    BASE_DIR = Path(__file__).resolve().parent.parent
-
-    STATIC_ROOT = BASE_DIR, 'staticfiles'
-    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/learning_log/staticfiles'
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'static')
     ]
     
     
