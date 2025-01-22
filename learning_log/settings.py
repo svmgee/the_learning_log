@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ih1jcw#a&^p-=r-_i&^q&thh@r^f_93j2j26*el%+xdpjge=%z
 DEBUG = False
 
 # for production, we'll need to specify hosts. 
-ALLOWED_HOSTS = ['localhost', 'https://sams-learning-log-32a0cabfc24e.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost', 'sams-learning-log-32a0cabfc24e.herokuapp.com/']
 
 
 # Application definition
