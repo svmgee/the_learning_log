@@ -144,7 +144,10 @@ BOOTSTRAP3 = {
 
 # Settings required for Heroku
 cwd = os.getcwd()
+#verifying this cwd is working as expected. 
+print(f"Current working directory: {cwd}")
 if cwd == '/app' or cwd[:4] == '/tmp':
+    print("Heroku environment detected.")
     # Database configuration
     DATABASES = {
         'default': dj_database_url.config(
@@ -153,14 +156,16 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     }
     
     # Honor the 'X-Forwarded-Proto' header for request.is_secure().
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     #Static asset config
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+     
     STATIC_URL = '/static/'
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
+        os.path.join(BASE_DIR, 'static'),
     ]
-    
-    
+    #Confirm STATIC_ROOT and STATICFILES_DIRS
+    print(f"STATIC_ROOT: {STATIC_ROOT}")
+    print(f"STATICFILES_DIRS: {STATICFILES_DIRS}")
 
