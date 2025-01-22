@@ -14,7 +14,8 @@ from pathlib import Path
 import os
 import dj_database_url
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
+print("BASE_DIR:", BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
