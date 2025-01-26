@@ -1,5 +1,14 @@
-# the_learning_log
-An online journal system that lets you keep track of information you've learned about a topic. Built using Django.
+# Web Application Development:
+## the_learning_log
+### An online journal system that lets you keep track of information you've learned about a topic. Built using Django.  
+<li>Features: </li>
+  <ul>User authentication and robust security measures</ul>
+  <ul>Optimized for performance, design, and functionality  </ul>
+<li>Future Plans: </li>
+  <ul>Containerize using Docker </ul> 
+  <ul>Deploy to AWS </ul>  
+
+
 
 # Some issues I worked through
 <li>Duplicate 'staticfiles' Directories.</li>
