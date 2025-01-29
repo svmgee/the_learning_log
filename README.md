@@ -25,7 +25,7 @@
 <li>Heroku Deployment issues</li>
   <ul>The application continuously failed with 400 errors due to a misconfigured <b>ALLOWED_HOST</b> variable and issues with the homepage link within <b>urls.py</b></ul>
 <li>Hard-coded Secret Key</li>
-<ul> While developing the app, I referred to a textbook that only utilized a hard-coded secret key. The textbook highlighted that this practice is insecure and should not be used in any production environment. To align with industry best practices, I created an environment variable to store the key securely. Additionally, I conducted further research on how to rotate secret keys for improved security. </ul>
+<ul> While developing the app, I referred to a textbook that only utilized a hard-coded secret key. The textbook highlighted that this practice is insecure and should not be used in any production environment. To align with industry best practices, I created an environment variable to store the key securely. Additionally, I conducted further research on how to rotate secret keys and added a fallback key for improved security. </ul>
 
 # Security Features
 <li>User Authentication and Authorization</li>
